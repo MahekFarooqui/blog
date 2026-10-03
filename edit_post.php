@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head><title>Edit Post</title><link rel="stylesheet" href="style.css"></head>
 <body>
+    <div class="container">
     <h2>Edit Post</h2>
     <form method="POST">
         <input type="text" name="title" value="<?php echo htmlspecialchars($post['title']); ?>" required>
@@ -35,5 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Update</button>
     </form>
     <a href="index.php">Back to posts</a>
+</div>
 </body>
 </html>

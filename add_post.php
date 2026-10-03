@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html>
 <head><title>Add Post</title><link rel="stylesheet" href="style.css"></head>
 <body>
+    <div class="container">
     <h2>Add New Post</h2>
     <form method="POST">
         <input type="text" name="title" placeholder="Title" required>
@@ -27,5 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Publish</button>
     </form>
     <a href="index.php">Back to posts</a>
+</div>
 </body>
 </html>
