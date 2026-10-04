@@ -35,8 +35,8 @@ $totalPages = ceil($totalPosts / $postsPerPage);
 <div class="container">
     <h1>PHP Blog Project</h1>
     <nav>
-        <?php if (isset($_SESSION['username'])): ?>
-            <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> | <a href="logout.php">Logout</a></p>
+        <?php if (isLoggedIn()): ?>
+            <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> (<?php echo htmlspecialchars($_SESSION['role']); ?>) | <a href="logout.php">Logout</a></p>
             <a class="btn" href="add_post.php">+ Add New Post</a>
         <?php else: ?>
             <a href="login.php">Login</a> | <a href="register.php">Register</a>
@@ -62,10 +62,12 @@ $totalPages = ceil($totalPosts / $postsPerPage);
             <h2><?php echo htmlspecialchars($post['title']); ?></h2>
             <p><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
             <small>Posted on <?php echo $post['created_at']; ?></small>
-            <?php if (isset($_SESSION['username'])): ?>
+            <?php if (isLoggedIn()): ?>
                 <div class="post-actions">
-                    <a href="edit_post.php?id=<?php echo $post['id']; ?>">Edit</a> |
-                    <a href="delete_post.php?id=<?php echo $post['id']; ?>" onclick="return confirm('Delete this post?');">Delete</a>
+                    <a href="edit_post.php?id=<?php echo $post['id']; ?>">Edit</a>
+                    <?php if (isAdmin()): ?>
+                        | <a href="delete_post.php?id=<?php echo $post['id']; ?>" onclick="return confirm('Delete this post?');">Delete</a>
+                    <?php endif; ?>
                 </div>
             <?php endif; ?>
         </div>

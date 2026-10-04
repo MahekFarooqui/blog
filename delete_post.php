@@ -1,7 +1,7 @@
 <?php
 require 'config.php';
-if (!isset($_SESSION['username'])) {
-    header("Location: login.php");
+if (!isAdmin()) {
+    header("Location: index.php?error=unauthorized");
     exit;
 }
 $id = intval($_GET['id'] ?? 0);
