@@ -11,7 +11,8 @@ $stmt->execute();
 $post = $stmt->get_result()->fetch_assoc();
 
 if (!$post) {
-    die("Post not found.");
+    header("Location: index.php?error=notfound");
+    exit;
 }
 
 $error = '';

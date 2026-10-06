@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if ($error) echo "<p style='color:red;'>" . htmlspecialchars($error) . "</p>"; ?>
     <form method="POST">
         <input type="text" name="username" placeholder="Username" required minlength="3" maxlength="50">
-        <input type="password" name="password" placeholder="Password" required minlength="6">
+        <input type="password" name="password" placeholder="Password">
         <button type="submit">Login</button>
     </form>
     <p>Don't have an account? <a href="register.php">Register</a></p>

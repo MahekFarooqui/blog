@@ -34,6 +34,16 @@ $totalPages = ceil($totalPosts / $postsPerPage);
 <body>
 <div class="container">
     <h1>PHP Blog Project</h1>
+
+    <?php if (isset($_GET['error'])): ?>
+        <p style="color:red;">
+            <?php
+            if ($_GET['error'] === 'unauthorized') echo "You don't have permission to do that.";
+            elseif ($_GET['error'] === 'notfound') echo "That post doesn't exist.";
+            ?>
+        </p>
+    <?php endif; ?>
+
     <nav>
         <?php if (isLoggedIn()): ?>
             <p>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?> (<?php echo htmlspecialchars($_SESSION['role']); ?>) | <a href="logout.php">Logout</a></p>
